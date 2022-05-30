@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import BP2
 
 bp = BP2.BP_Updater()

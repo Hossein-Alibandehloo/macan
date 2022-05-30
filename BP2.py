@@ -1,5 +1,4 @@
 from __future__ import print_function
-from pickle import NONE
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 import requests
