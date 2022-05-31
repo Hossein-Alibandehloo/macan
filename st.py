@@ -11,13 +11,13 @@ bp = BP2.BP_Updater()
 
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
-    st.write('Dabase is updating...')
+#     st.write('Dabase is updating...')
     bp.update(starting_row, ending_row)
-#     st.write('Done!')
+    st.write('Done!')
 
-st.title('BP Database Updater')
+st.title('Database Updater')
 
-starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to starting row of your database table')
+starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
 ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
 
 # values = st.slider(
