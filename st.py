@@ -11,7 +11,7 @@ bp = BP2.BP_Updater()
 def onClickUpdate():
     st.write('Dabase is updating...')
     bp.update(starting_row, ending_row)
-
+    st.write('Done!')
 
 st.title('BP Database Updater')
 
