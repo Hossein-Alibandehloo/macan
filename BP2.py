@@ -48,7 +48,8 @@ class BP_Updater:
             res = s.post('https://influencermarketinghub.com/wp-admin/admin-ajax.php', data=Form_data, headers=header)
             dict = res.json()
             if len(dict) > 1:
-                return dict['followers'], int(dict['er'])/100
+                res = round(dict['followers']/1000)
+                return 1000 * int(res), int(dict['er'])/100
             else:
                 return '-', '-'
 
