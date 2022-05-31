@@ -53,6 +53,8 @@ class BP_Updater:
                 return '-', '-'
 
     def update(self, start_row, last_row):
+        st.write('Dabase is updating...')
+        
         result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(start_row, last_row)).execute()
 
         print(result)
