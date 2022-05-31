@@ -16,7 +16,7 @@ def onClickUpdate():
 st.title('BP Database Updater')
 
 starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to starting row of your database table')
-ending_row = st.number_input('Insert ending row number', max_value=3000)
+ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
 
 # values = st.slider(
 #      'Select a range',
@@ -24,3 +24,4 @@ ending_row = st.number_input('Insert ending row number', max_value=3000)
 
 
 updateButton = st.button('Update Date', on_click=onClickUpdate)
+st.write('Done!')
