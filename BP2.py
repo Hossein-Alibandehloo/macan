@@ -62,7 +62,9 @@ class BP_Updater:
         for i in v:
             if len(i) > 0:
                 id_index.append([i[0], j])
-            j +=1
+            else:
+                id_index.append(['', j])
+            j +=1                
         data = []
         for k in id_index:
             d = self.influencermarketinghub(k[0])
