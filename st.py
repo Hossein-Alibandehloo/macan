@@ -24,4 +24,4 @@ ending_row = st.number_input('Insert ending row number', min_value = starting_ro
 
 
 updateButton = st.button('Update Date', on_click=onClickUpdate)
-st.write('Done!')
+# st.write('Done!')
