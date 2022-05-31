@@ -8,6 +8,8 @@ bp = BP2.BP_Updater()
 #     st.write('Values:', values)
 #     bp.update(values[0], values[1])
 
+
+@st.cache
 def onClickUpdate():
     st.write('Dabase is updating...')
     bp.update(starting_row, ending_row)
