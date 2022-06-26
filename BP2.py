@@ -5,8 +5,8 @@ import requests
 
 
 class BP_Updater:
-#     start_row = 5
-#     last_row = 15
+    start_row = 5
+    last_row = 15
 
     SCOPES = None
     creds = None
