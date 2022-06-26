@@ -49,7 +49,7 @@ class BP_Updater:
             dict = res.json()
             if len(dict) > 1:
                 res = round(dict['followers']/1000)
-                return 1000 * int(res), int(dict['er'])/100
+                return 1000 * int(res), float(dict['er'])/100
             else:
                 return '-', '-'
 
