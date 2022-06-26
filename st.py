@@ -15,7 +15,6 @@ if page_type == 'Influencer':
      st.write('You selected Influencer.')
 else:
      st.write("You selected Business page.")
-st.write(page_type, '---')
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
     bp.update(starting_row, ending_row, st, page_type)
