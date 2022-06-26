@@ -54,7 +54,7 @@ class BP_Updater:
                 return '-', '-'
 
     def update(self, start_row, last_row, st, page_type):
-        if self.page_type == 'Business page'
+        if self.page_type == 'Business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(start_row, last_row)).execute()
             v = result['values']
             id_index = []
