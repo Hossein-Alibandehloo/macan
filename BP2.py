@@ -5,8 +5,8 @@ import requests
 
 
 class BP_Updater:
-    start_row = 5
-    last_row = 15
+#     start_row = 5
+#     last_row = 15
 
     SCOPES = None
     creds = None
@@ -53,25 +53,46 @@ class BP_Updater:
             else:
                 return '-', '-'
 
-    def update(self, start_row, last_row, st):        
-        result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(start_row, last_row)).execute()
-        
-        print(result)
-        v = result['values']
-        id_index = []
-        j = self.start_row
-        for i in v:
-            if len(i) > 0:
-                id_index.append([i[0], j])
-            else:
-                id_index.append(['', j])
-            j +=1                
-        data = []
-        for k in id_index:
-            d = self.influencermarketinghub(k[0])
-            data.append([d[0], d[1]])
-            st.write(k[1])
+    def update(self, start_row, last_row, st, page_type):
+        if page_type == 'Business page'
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(start_row, last_row)).execute()
+            v = result['values']
+            id_index = []
+            j = self.start_row
+            for i in v:
+                if len(i) > 0:
+                    id_index.append([i[0], j])
+                else:
+                    id_index.append(['', j])
+                j +=1                
+            data = []
+            for k in id_index:
+                d = self.influencermarketinghub(k[0])
+                data.append([d[0], d[1]])
+                st.write(k[1])
 
-        request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                    range="contact business page!E{}:F{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
-        print(request)
+            request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
+                                        range="contact business page!E{}:F{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+            print(request)
+        else:
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Contact influencer!B{}:B{}".format(start_row, last_row)).execute()
+            v = result['values']
+            id_index = []
+            j = self.start_row
+            for i in v:
+                if len(i) > 0:
+                    id_index.append([i[0], j])
+                else:
+                    id_index.append(['', j])
+                j +=1                
+            data = []
+            for k in id_index:
+                d = self.influencermarketinghub(k[0])
+                data.append([d[0], d[1]])
+                st.write(k[1])
+
+            request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
+                                        range="contact business page!H{}:I{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+            print(request)
+            
+
