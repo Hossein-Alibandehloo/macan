@@ -69,7 +69,7 @@ class BP_Updater:
             for k in id_index:
                 d = self.influencermarketinghub(k[0])
                 data.append([d[0], d[1]])
-                st.write(k[1])
+                st.write(d[0])
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="contact business page!E{}:F{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
@@ -89,10 +89,10 @@ class BP_Updater:
             for k in id_index:
                 d = self.influencermarketinghub(k[0])
                 data.append([d[0], d[1]])
-                st.write(k[1])
+                st.write(d[0])
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                        range="contact business page!H{}:I{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+                                        range="Contact influencer!H{}:I{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             
 
