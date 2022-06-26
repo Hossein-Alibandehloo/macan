@@ -13,7 +13,7 @@ page_type = st.radio(
 
 if page_type == 'Influencer':
      st.write('You selected Influencer.')
- else:
+else:
      st.write("You selected Business page.")
 st.write(page_type, '---')
 @st.cache(suppress_st_warning=True)
