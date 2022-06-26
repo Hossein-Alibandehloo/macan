@@ -11,7 +11,7 @@ bp = BP2.BP_Updater()
 
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
-    bp.update(starting_row, ending_row)
+    bp.update(starting_row, ending_row, st)
     
     st.write('Process Done!')
 
