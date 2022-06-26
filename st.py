@@ -18,7 +18,7 @@ else:
 st.write(page_type, '---')
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
-    bp.update(starting_row, ending_row, st)
+    bp.update(starting_row, ending_row, st, page_type)
     
     st.write('Process Done!')
 
