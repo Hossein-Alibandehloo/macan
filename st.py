@@ -7,8 +7,15 @@ bp = BP2.BP_Updater()
 # def onClickUpdate():
 #     st.write('Values:', values)
 #     bp.update(values[0], values[1])
+page_type = st.radio(
+     "Which sheet do you want to update?",
+     ('Influencer', 'Business page'))
 
-
+if page_type == 'Influencer':
+     st.write('You selected Influencer.')
+ else:
+     st.write("You selected Business page.")
+st.write(page_type, '---')
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
     bp.update(starting_row, ending_row, st)
