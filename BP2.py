@@ -5,7 +5,7 @@ import requests
 import pandas as pd
 
 class BP_Updater:
-    start_row = 5
+    start_row = 2
     last_row = 15
 
     SCOPES = None
@@ -53,12 +53,12 @@ class BP_Updater:
             else:
                 return '-', '-'
 
-    def update(self, start_row, last_row, st, page_type):
+    def update(self, startRow, lastRow, st, page_type):
         if page_type == 'Business page':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(start_row, last_row)).execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(startRow, lastRow)).execute()
             v = result['values']
             id_index = []
-            j = start_row
+            j = startRow
             for i in v:
                 if len(i) > 0:
                     id_index.append([i[0], j])
@@ -72,13 +72,13 @@ class BP_Updater:
 #                 st.write(d[0])
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                        range="contact business page!E{}:F{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+                                        range="contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
         else:
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Contact influencer!B{}:B{}".format(start_row, last_row)).execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Contact influencer!B{}:B{}".format(startRow, lastRow)).execute()
             v = result['values']
             id_index = []
-            j = self.start_row
+            j = startRow
             for i in v:
                 if len(i) > 0:
                     id_index.append([i[0], j])
@@ -92,7 +92,7 @@ class BP_Updater:
 #                 st.write(d[0])
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                        range="Contact influencer!H{}:I{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+                                        range="Contact influencer!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
     def get_data(self, name):
 
