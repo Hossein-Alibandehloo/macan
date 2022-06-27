@@ -14,10 +14,12 @@ bp = BP2.BP_Updater()
 #      ('Influencer', 'Business page'))
 page_type = st.sidebar.button('Influencer')
 page_type = st.sidebar.button('Business page')
-add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone")
-)
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
+    st.write(add_radio)
 if page_type == 'Influencer':
      st.write('You selected Influencer.')
      st.dataframe(bp.get_data('Contact influencer'))
