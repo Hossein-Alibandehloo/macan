@@ -14,15 +14,6 @@ bp = BP2.BP_Updater()
 # #      ('Influencer', 'Business page'))
 # page_type = st.sidebar.button('Influencer')
 # page_type = st.sidebar.button('Business page')
-with st.sidebar:
-    page_type = st.sidebar.selectbox(
-    "Which would you like to update?",
-    ("Influencer", "Business page", "Telegram", 'PR')
-)
-    st.write(page_type, 'is selected.')
-    starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
-    ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
-    updateButton = st.button('Update Date', on_click=onClickUpdate)
 
 
      
@@ -49,3 +40,13 @@ def onClickUpdate():
      st.sucess('Process Done!')
 
 # st.write('Done!') 
+with st.sidebar:
+    page_type = st.sidebar.selectbox(
+    "Which would you like to update?",
+    ("Influencer", "Business page", "Telegram", 'PR')
+)
+    st.write(page_type, 'is selected.')
+    starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
+    ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
+    updateButton = st.button('Update Date', on_click=onClickUpdate)
+
