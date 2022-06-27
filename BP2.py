@@ -96,8 +96,8 @@ class BP_Updater:
             print(request)
     def get_data(self, name):
 
-        global sheet, service, sheet_id_target, data_range
-        result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= f"{name}!B2:I4000".format(start_row, last_row)).execute()
+#         global sheet, service, sheet_id_target, data_range
+        result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= f"{name}!B2:I4000").execute()
         data = result['values']
 
         for l in data:
