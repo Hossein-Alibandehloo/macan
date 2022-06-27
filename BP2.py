@@ -100,7 +100,7 @@ class BP_Updater:
         if name == 'contact business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "contact business page!B1:F4000").execute()
         else:
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Contact influencer!B1:I1000").execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Contact influencer!B1:I2000").execute()
         data = result['values']
         
         for l in data:
