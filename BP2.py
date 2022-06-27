@@ -97,9 +97,9 @@ class BP_Updater:
 #         global sheet, service, sheet_id_target, data_range
         if name == 'contact business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "contact business page!B1:F4000").execute()
-        elif 'Contact influencer':
+        elif name == 'Contact influencer':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Contact influencer!B1:I2000").execute()
-        elif 'Telegram':
+        elif name == 'Telegram':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!B1:D2000").execute()
         data = result['values']
         
