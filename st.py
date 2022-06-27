@@ -14,7 +14,10 @@ bp = BP2.BP_Updater()
 #      ('Influencer', 'Business page'))
 page_type = st.sidebar.button('Influencer')
 page_type = st.sidebar.button('Business page')
-
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
 if page_type == 'Influencer':
      st.write('You selected Influencer.')
      st.dataframe(bp.get_data('Contact influencer'))
