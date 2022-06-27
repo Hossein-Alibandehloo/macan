@@ -27,9 +27,12 @@ st.title('Database Updater')
 if page_type == 'Influencer':
      st.write('You selected Influencer.')
      st.dataframe(bp.get_data('Contact influencer'))
-else:
+elif page_type == 'Business page':
      st.write("You selected Business page.")
      st.dataframe(bp.get_data('contact business page'))
+elif page_type == 'Telegram':
+     st.write("You selected Telegram.")
+     st.dataframe(bp.get_data('Telegram'))   
 
 starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
 ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
