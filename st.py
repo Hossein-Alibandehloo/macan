@@ -19,9 +19,12 @@ else:
      st.dataframe(bp.get_data('contact business page'))
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
-    bp.update(starting_row, ending_row, st, page_type)
+     with st.spinner('Wait for it...'):
+          time.sleep(5)
+
+          bp.update(starting_row, ending_row, st, page_type)
     
-    st.write('Process Done!')
+          st.success('Done!')
 
 st.title('Database Updater')
 
