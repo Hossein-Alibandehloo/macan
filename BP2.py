@@ -51,6 +51,23 @@ class BP_Updater:
             else:
                 return '-', '-'
 
+    def tlg_member(id):
+        if '/t.me/joinchat' in id:
+            res = requests.get(id)
+            xp = html.fromstring(res.text)
+            member = xp.xpath("//div[@class='tgme_page_extra']/text()")
+            if len(member) > 0:
+                return int(member.strip().replace('members','').replace(' ', ''))
+            else:
+                return '-'
+        else:
+            res = requests.get('https://ir.tgstat.com/channel/@' + id)
+            xp = html.fromstring(res.text)
+            member = xp.xpath("//div[@class='align-center']/text()")
+            if len(member) > 0:
+                return int(member[1].strip().replace(' ',''))
+            else:
+                return '-'
     def update(self, startRow, lastRow, st, page_type):
         if page_type == 'Business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(startRow, lastRow)).execute()
