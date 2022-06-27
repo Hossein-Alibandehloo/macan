@@ -97,9 +97,12 @@ class BP_Updater:
     def get_data(self, name):
 
 #         global sheet, service, sheet_id_target, data_range
-        result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= f"{name}!B2:I4000").execute()
+        if name == 'contact business page'
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "contact business page!B1:F4000").execute()
+        else:
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Contact influencer!B1:I1000").execute()
         data = result['values']
-
+        
         for l in data:
             max = len(data[0])
             if len(l) < max:
