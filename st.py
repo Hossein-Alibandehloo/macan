@@ -20,7 +20,10 @@ with st.sidebar:
     ("Influencer", "Business page", "Telegram", 'PR')
 )
     st.write(page_type, 'is selected.')
-    
+    starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
+    ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
+    updateButton = st.button('Update Date', on_click=onClickUpdate)
+
 
      
 st.title('Database Updater')
@@ -34,8 +37,6 @@ elif page_type == 'Telegram':
      st.write("You selected Telegram.")
      st.dataframe(bp.get_data('Telegram'))   
 
-starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
-ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
 
 # values = st.slider(
 #      'Select a range',
@@ -47,5 +48,4 @@ def onClickUpdate():
      bp.update(starting_row, ending_row, st, page_type)
      st.sucess('Process Done!')
 
-updateButton = st.button('Update Date', on_click=onClickUpdate)
 # st.write('Done!') 
