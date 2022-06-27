@@ -20,7 +20,6 @@ else:
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
      with st.spinner('Wait for it...'):
-          time.sleep(5)
 
           bp.update(starting_row, ending_row, st, page_type)
     
