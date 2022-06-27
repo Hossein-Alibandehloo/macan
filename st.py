@@ -11,15 +11,15 @@ bp = BP2.BP_Updater()
 
 # page_type = st.radio(
 #      "Which sheet do you want to update?",
-#      ('Influencer', 'Business page'))
-page_type = st.sidebar.button('Influencer')
-page_type = st.sidebar.button('Business page')
+# #      ('Influencer', 'Business page'))
+# page_type = st.sidebar.button('Influencer')
+# page_type = st.sidebar.button('Business page')
 with st.sidebar:
-    add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
-    )
-    st.write(add_radio)
+    page_type = st.sidebar.selectbox(
+    "How would you like to be updated?",
+    ("Influencer", "Business page", "Telegram", 'PR')
+)
+    st.write('You have selected ', page_type)
 if page_type == 'Influencer':
      st.write('You selected Influencer.')
      st.dataframe(bp.get_data('Contact influencer'))
