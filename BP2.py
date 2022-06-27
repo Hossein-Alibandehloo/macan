@@ -94,23 +94,23 @@ class BP_Updater:
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="Contact influencer!H{}:I{}".format(start_row, last_row), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
-        def get_data(self, name):
+    def get_data(self, name):
 
-            global sheet, service, sheet_id_target, data_range
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= f"{self.name}!B2:I4000".format(start_row, last_row)).execute()
-            data = result['values']
+        global sheet, service, sheet_id_target, data_range
+        result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= f"{self.name}!B2:I4000".format(start_row, last_row)).execute()
+        data = result['values']
 
-            for l in data:
-                max = len(data[0])
-                if len(l) < max:
-                    while True:
-                        l.append('')
-                        if len(l) == len(data[0]):
-                            break
-            index = [first[0] for first in data][1:]
-            headless_data = data[1:]
-            df = pandas.DataFrame(headless_data, index=index, columns=data[0])
-            
-            return df           
+        for l in data:
+            max = len(data[0])
+            if len(l) < max:
+                while True:
+                    l.append('')
+                    if len(l) == len(data[0]):
+                        break
+        index = [first[0] for first in data][1:]
+        headless_data = data[1:]
+        df = pandas.DataFrame(headless_data, index=index, columns=data[0])
+
+        return df           
             
 
