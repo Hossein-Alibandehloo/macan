@@ -13,10 +13,10 @@ page_type = st.radio(
 
 if page_type == 'Influencer':
      st.write('You selected Influencer.')
-     st.dataframe(bp.get_data('Contact influencer')
+     st.dataframe(bp.get_data('Contact influencer'))
 else:
      st.write("You selected Business page.")
-     st.dataframe(bp.get_data('contact business page')
+     st.dataframe(bp.get_data('contact business page'))
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
     bp.update(starting_row, ending_row, st, page_type)
