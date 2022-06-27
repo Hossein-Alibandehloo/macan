@@ -5,8 +5,6 @@ import requests
 import pandas as pd
 
 class BP_Updater:
-    start_row = 2
-    last_row = 15
 
     SCOPES = None
     creds = None
@@ -99,8 +97,10 @@ class BP_Updater:
 #         global sheet, service, sheet_id_target, data_range
         if name == 'contact business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "contact business page!B1:F4000").execute()
-        else:
+        elif 'Contact influencer':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Contact influencer!B1:I2000").execute()
+        elif 'Telegram':
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!B1:D2000").execute()
         data = result['values']
         
         for l in data:
