@@ -2,7 +2,7 @@ from __future__ import print_function
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 import requests
-
+import pandas as pd
 
 class BP_Updater:
     start_row = 5
@@ -109,7 +109,7 @@ class BP_Updater:
                         break
         index = [first[0] for first in data][1:]
         headless_data = data[1:]
-        df = pandas.DataFrame(headless_data, index=index, columns=data[0])
+        df = pd.DataFrame(headless_data, index=index, columns=data[0])
 
         return df           
             
