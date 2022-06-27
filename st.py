@@ -17,14 +17,8 @@ if page_type == 'Influencer':
 else:
      st.write("You selected Business page.")
      st.dataframe(bp.get_data('contact business page'))
-@st.cache(suppress_st_warning=True)
-def onClickUpdate():
-     with st.spinner('Wait for it...'):
 
-          bp.update(starting_row, ending_row, st, page_type)
-    
-          st.success('Done!')
-
+     
 st.title('Database Updater')
 
 starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
@@ -35,5 +29,9 @@ ending_row = st.number_input('Insert ending row number', min_value = starting_ro
 #      2, 100, (2, 100), step=1)
 
 
+@st.cache(suppress_st_warning=True)
+def onClickUpdate():
+     bp.update(starting_row, ending_row, st, page_type)
+
 updateButton = st.button('Update Date', on_click=onClickUpdate)
-# st.write('Done!')
+# st.write('Done!') 
