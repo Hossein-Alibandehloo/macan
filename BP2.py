@@ -70,22 +70,24 @@ class BP_Updater:
             else:
                 return '-'
     def update(self, startRow, lastRow, st, page_type):
+        ph = st.empty()
+        
         if page_type == 'Business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(startRow, lastRow)).execute()
-            v = result['values']
+            vlaues = result['values']
             id_index = []
             j = startRow
-            for i in v:
-                if len(i) > 0:
-                    id_index.append([i[0], j])
+            for value in values:
+                if len(value) > 0:
+                    id_index.append([value[0], j])
                 else:
                     id_index.append(['', j])
-                j +=1                
+                j += 1                
             data = []
-            for k in id_index:
-                d = self.influencermarketinghub(k[0])
-                data.append([d[0], d[1]])
-#                 st.write(d[0])
+            for row in id_index:
+                follower_er = self.influencermarketinghub(row[0])
+                data.append([follower_er[0], follower_er[1]])
+#               ph.metric(row)
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
