@@ -41,12 +41,12 @@ with st.sidebar:
     ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
     updateButton = st.button('Update Date', on_click=onClickUpdate)
 if page_type == 'Influencer':
-     st.write('You selected Influencer.')
+     st.subheader('You selected Influencer.')
      st.dataframe(bp.get_data('Contact influencer'))
 elif page_type == 'Business page':
-     st.write("You selected Business page.")
+     st.subheader("You selected Business page.")
      st.dataframe(bp.get_data('contact business page'))
 elif page_type == 'Telegram':
-     st.write("You selected Telegram.")
+     st.subheader("You selected Telegram.")
      st.dataframe(bp.get_data('Telegram'))   
 
