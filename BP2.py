@@ -143,10 +143,10 @@ class BP_Updater:
                     l.append('')
                     if len(l) == len(data[0]):
                         break
-        index = [first[0] for first in data][1:]
+#         index = [first[0] for first in data][1:]
         headless_data = data[1:]
         df = pd.DataFrame(headless_data, columns=data[0])
-        df2 = del df['Phone Number']
-        return df2           
+        del df['Phone Number']
+        return df        
             
 
