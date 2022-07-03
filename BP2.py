@@ -93,7 +93,7 @@ class BP_Updater:
                 except:
                     sleep(15)
                 data.append([follower_er[0], follower_er[1]])
-                progress.markdown(f'Initial updating row is: {row[1]}')
+                progress.markdown(f'Initial updating row is: {row[1] - 2}')
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
@@ -113,7 +113,7 @@ class BP_Updater:
                 j += 1           
             data = []
             for row in id_index:
-                progress.markdown(f'Initial updating row is: {row[1]}')
+                progress.markdown(f'Initial updating row is: {row[1] - 2}')
                 try:
                     follower_er = self.influencermarketinghub(row[0])
                 except: 
@@ -146,7 +146,7 @@ class BP_Updater:
 #         index = [first[0] for first in data][1:]
         headless_data = data[1:]
         df = pd.DataFrame(headless_data, columns=data[0])
-        del df[["Phone Number"]]     
+        del df["Phone Number"]   
         return df        
             
 
