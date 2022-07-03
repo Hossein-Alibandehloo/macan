@@ -87,32 +87,34 @@ class BP_Updater:
             for row in id_index:
                 follower_er = self.influencermarketinghub(row[0])
                 data.append([follower_er[0], follower_er[1]])
-                progress.markdown(row[1])
+                progress.markdown(f'Initial updating row is: {row[1]}')
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
+            progress.markdown('')
         elif page_type == 'Influencer':
             
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Contact influencer!B{}:B{}".format(startRow, lastRow)).execute()
-            v = result['values']
+            values = result['values']
             id_index = []
             j = startRow
-            for i in v:
+            for value in values:
                 if len(i) > 0:
                     id_index.append([i[0], j])
                 else:
                     id_index.append(['', j])
                 j +=1                
             data = []
-            for k in id_index:
-                d = self.influencermarketinghub(k[0])
-                data.append([d[0], d[1]])
-                progress.markdown(k[1])
+            for row in id_index:
+                follower_er = self.influencermarketinghub(row[0])
+                data.append([follower_er[0], follower_er[1]])
+                progress.markdown(f'Initial updating row is: {row[1]}')
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="Contact influencer!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
+            progress.markdown('')
     def get_data(self, name):
 
 #         global sheet, service, sheet_id_target, data_range
