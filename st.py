@@ -34,11 +34,15 @@ def onClickUpdate():
 with st.sidebar:
     page_type = st.sidebar.selectbox(
     "Which would you like to update?",
-    ("Influencer", "Business page", "Telegram", 'PR')
+    ("Influencer", "Business page", "Telegram")
 )
     st.write(page_type, 'is selected.')
     starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
+    st.write('The starting row is: ', starting_row)
+    
     ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
+    st.write('The ending row is: ', ending_row)
+
     updateButton = st.button('Update Date', on_click=onClickUpdate)
 if page_type == 'Influencer':
      st.subheader('You selected Influencer.')
