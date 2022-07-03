@@ -70,7 +70,7 @@ class BP_Updater:
             else:
                 return '-'
     def update(self, startRow, lastRow, st, page_type):
-        ph = st.empty()
+        progress = st.empty()
         
         if page_type == 'Business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(startRow, lastRow)).execute()
@@ -87,13 +87,13 @@ class BP_Updater:
             for row in id_index:
                 follower_er = self.influencermarketinghub(row[0])
                 data.append([follower_er[0], follower_er[1]])
-#               ph.metric(row)
+                progress.markdown(row[1])
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
         elif page_type == 'Influencer':
-            progress = st.empty()
+            
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Contact influencer!B{}:B{}".format(startRow, lastRow)).execute()
             v = result['values']
             id_index = []
@@ -108,7 +108,7 @@ class BP_Updater:
             for k in id_index:
                 d = self.influencermarketinghub(k[0])
                 data.append([d[0], d[1]])
-                progress.markdown(d[0])
+                progress.markdown(k[1])
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="Contact influencer!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
