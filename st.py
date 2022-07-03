@@ -37,7 +37,7 @@ with st.sidebar:
     ("Influencer", "Business page")
 )
     st.write(page_type, 'is selected.')
-    starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
+    starting_row = st.number_input('Insert starting row number', min_value=0, help='You need to enter starting row of your database table')
     st.write('The starting row is: ', starting_row)
     
     ending_row = st.number_input('Insert ending row number', min_value = starting_row + 1, max_value=10000)
