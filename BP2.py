@@ -101,10 +101,10 @@ class BP_Updater:
             j = startRow
             for value in values:
                 if len(value) > 0:
-                    id_index.append([i[0], j])
+                    id_index.append([value[0], j])
                 else:
                     id_index.append(['', j])
-                j +=1                
+                j += 1           
             data = []
             for row in id_index:
                 progress.markdown(f'Initial updating row is: {row[0]}')
