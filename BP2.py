@@ -125,7 +125,7 @@ class BP_Updater:
                                         range="Contact influencer!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             progress.markdown('')
-    def get_data(self, name, st):
+    def get_data(self, name):
 
 #         global sheet, service, sheet_id_target, data_range
         if name == 'contact business page':
@@ -146,8 +146,8 @@ class BP_Updater:
 #         index = [first[0] for first in data][1:]
         headless_data = data[1:]
         df = pd.DataFrame(headless_data, columns=data[0])
-        del df["Phone Number"]  
-        st.dataframe(df)
+        del df["Phone"]  
+        
         return df        
             
 
