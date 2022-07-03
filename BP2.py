@@ -90,6 +90,7 @@ class BP_Updater:
                                         range="contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
         else:
+            st.write('Start Row is: ',startRow,'\n Last Row is: ' lastRow)
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Contact influencer!B{}:B{}".format(startRow, lastRow)).execute()
             v = result['values']
             id_index = []
