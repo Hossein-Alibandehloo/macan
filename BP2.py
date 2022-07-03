@@ -87,7 +87,7 @@ class BP_Updater:
             for row in id_index:
                 try:
                     follower_er = self.influencermarketinghub(row[0])
-                exept: pass
+                except: pass
                 data.append([follower_er[0], follower_er[1]])
                 progress.markdown(f'Initial updating row is: {row[1]}')
 
@@ -112,7 +112,7 @@ class BP_Updater:
                 progress.markdown(f'Initial updating row is: {row[0]}')
                 try:
                     follower_er = self.influencermarketinghub(row[0])
-                exept: pass
+                except: pass
                 data.append([follower_er[0], follower_er[1]])
                 
 
