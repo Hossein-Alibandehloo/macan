@@ -28,7 +28,7 @@ st.title('Database Updater')
 @st.cache(suppress_st_warning=True)
 def onClickUpdate():
      bp.update(starting_row, ending_row, st, page_type)
-     st.sucess('Process Done!')
+#      st.sucess('Process Done!')
 
 # st.write('Done!') 
 with st.sidebar:
