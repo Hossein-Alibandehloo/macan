@@ -100,7 +100,7 @@ class BP_Updater:
             id_index = []
             j = startRow
             for value in values:
-                if len(i) > 0:
+                if len(value) > 0:
                     id_index.append([i[0], j])
                 else:
                     id_index.append(['', j])
