@@ -107,9 +107,10 @@ class BP_Updater:
                 j +=1                
             data = []
             for row in id_index:
+                progress.markdown(f'Initial updating row is: {row[0]}')
                 follower_er = self.influencermarketinghub(row[0])
                 data.append([follower_er[0], follower_er[1]])
-                progress.markdown(f'Initial updating row is: {row[1]}')
+                
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="Contact influencer!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
