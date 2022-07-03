@@ -146,7 +146,9 @@ class BP_Updater:
 #         index = [first[0] for first in data][1:]
         headless_data = data[1:]
         df = pd.DataFrame(headless_data, columns=data[0])
-        del df["Phone"]  
+        del df["Phone"]
+        if 'PhoneNumber' in data[0]:
+            del df['PhoneNumber']
         
         return df        
             
