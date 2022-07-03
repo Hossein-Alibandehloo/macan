@@ -74,7 +74,7 @@ class BP_Updater:
         
         if page_type == 'Business page':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(startRow, lastRow)).execute()
-            vlaues = result['values']
+            values = result['values']
             id_index = []
             j = startRow
             for value in values:
