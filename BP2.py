@@ -101,7 +101,7 @@ class BP_Updater:
                 
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                        range="Contact influencer!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+                                        range="Contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             progress.markdown('')
         elif page_type == 'Influencer':
