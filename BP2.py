@@ -90,9 +90,12 @@ class BP_Updater:
             for row in id_index:
                 try:
                     follower_er = self.influencermarketinghub(row[0])
-                except:
+                except: 
                     sleep(15)
-                data.append([follower_er[0], follower_er[1]])
+                    try:
+                        follower_er = self.influencermarketinghub(row[0])
+                    except:
+                        data.append(['*', '*'])
                 progress.markdown(f'Initial updating row is: {row[1] - 2}')
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
