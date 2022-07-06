@@ -88,6 +88,7 @@ class BP_Updater:
                 j += 1                
             data = []
             for row in id_index:
+                progress.markdown(f'Initial updating row is: {row[1] - 2}')
                 try:
                     follower_er = self.influencermarketinghub(row[0])
                 except: 
@@ -96,10 +97,11 @@ class BP_Updater:
                         follower_er = self.influencermarketinghub(row[0])
                     except:
                         data.append(['*', '*'])
-                progress.markdown(f'Initial updating row is: {row[1] - 2}')
+                data.append([follower_er[0], follower_er[1]])
+                
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                        range="contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+                                        range="Contact influencer!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             progress.markdown('')
         elif page_type == 'Influencer':
