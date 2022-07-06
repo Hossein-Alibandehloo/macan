@@ -118,6 +118,10 @@ class BP_Updater:
                     follower_er = self.influencermarketinghub(row[0])
                 except: 
                     sleep(15)
+                    try:
+                        follower_er = self.influencermarketinghub(row[0])
+                    except:
+                        data.append(['*', '*'])
                 data.append([follower_er[0], follower_er[1]])
                 
 
