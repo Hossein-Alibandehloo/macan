@@ -34,7 +34,7 @@ def onClickUpdate():
 with st.sidebar:
     page_type = st.sidebar.selectbox(
     "Which would you like to update?",
-    ("Influencer", "Business page")
+    ("Influencers", "Business Pages")
 )
     st.write(page_type, 'is selected.')
     starting_row = st.number_input('Insert starting row number', min_value=0, help='You need to enter starting row of your database table')
