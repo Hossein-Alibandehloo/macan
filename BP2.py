@@ -82,7 +82,7 @@ class BP_Updater:
         progress = st.empty()
         
         if page_type == 'Business page':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="contact business page!B{}:B{}".format(startRow, lastRow)).execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Business Pages!B{}:B{}".format(startRow, lastRow)).execute()
             values = result['values']
             id_index = []
             j = startRow
@@ -107,12 +107,12 @@ class BP_Updater:
                 
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                        range="Contact business page!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+                                        range="Business Pages!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             progress.markdown('')
         elif page_type == 'Influencer':
             
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Contact influencer!B{}:B{}".format(startRow, lastRow)).execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Influencers!B{}:B{}".format(startRow, lastRow)).execute()
             values = result['values']
             id_index = []
             j = startRow
@@ -137,16 +137,16 @@ class BP_Updater:
                 
 
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
-                                        range="Contact influencer!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+                                        range="Influencers!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             progress.markdown('')
     def get_data(self, name):
 
 #         global sheet, service, sheet_id_target, data_range
-        if name == 'contact business page':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "contact business page!B1:F4000").execute()
-        elif name == 'Contact influencer':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Contact influencer!B1:I2000").execute()
+        if name == 'Business Pges':
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Business Pages!B1:F4000").execute()
+        elif name == 'Influencers':
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Influencers!B1:I2000").execute()
         elif name == 'Telegram':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!B1:D2000").execute()
         data = result['values']
