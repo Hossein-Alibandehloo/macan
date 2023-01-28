@@ -44,11 +44,11 @@ with st.sidebar:
     st.write('The ending row is: ', ending_row)
 
     updateButton = st.button('Update Date', on_click=onClickUpdate)
-if page_type == 'Influencer':
-     st.subheader('Influencer.')
+if page_type == 'Influencers':
+     st.subheader('Influencers')
      st.dataframe(bp.get_data('Influencers'))
-elif page_type == 'Business page':
-     st.subheader("Business page.")
+elif page_type == 'Business Pages':
+     st.subheader("Business Pages.")
      st.dataframe(bp.get_data('Business Pages'))
 elif page_type == 'Telegram':
      st.subheader("Telegram.")
