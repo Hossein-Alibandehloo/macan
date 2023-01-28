@@ -81,7 +81,7 @@ class BP_Updater:
         lastRow = lastRow + 2
         progress = st.empty()
         
-        if page_type == 'Business page':
+        if page_type == 'Business Pages':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Business Pages!B{}:B{}".format(startRow, lastRow)).execute()
             values = result['values']
             id_index = []
@@ -110,7 +110,7 @@ class BP_Updater:
                                         range="Business Pages!E{}:F{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             progress.markdown('')
-        elif page_type == 'Influencer':
+        elif page_type == 'Influencers':
             
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Influencers!B{}:B{}".format(startRow, lastRow)).execute()
             values = result['values']
