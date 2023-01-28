@@ -29,7 +29,7 @@ class BP_Updater:
 
         # The ID and range of a sample spreadsheet.
         self.sheet_id_target = '1V35Kr3IhPawZFM5oRUVcneRBRxvXP4bvxjKy3aQyIG0'
-        service = build('sheets', 'v4', credentials=self.creds, http="http")
+        service = build('sheets', 'v4', credentials=self.creds)
         self.sheet = service.spreadsheets()
         # result = sheet.values().get(spreadsheetId=sheet_id_target,
         #                                     range="Sheet1!A1:B5").execute()
