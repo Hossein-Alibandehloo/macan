@@ -46,10 +46,10 @@ with st.sidebar:
     updateButton = st.button('Update Date', on_click=onClickUpdate)
 if page_type == 'Influencer':
      st.subheader('Influencer.')
-     st.dataframe(bp.get_data('Contact influencer'))
+     st.dataframe(bp.get_data('Influencers'))
 elif page_type == 'Business page':
      st.subheader("Business page.")
-     st.dataframe(bp.get_data('contact business page'))
+     st.dataframe(bp.get_data('Business Pages'))
 elif page_type == 'Telegram':
      st.subheader("Telegram.")
      st.dataframe(bp.get_data('Telegram'))   
