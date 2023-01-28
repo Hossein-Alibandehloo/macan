@@ -143,7 +143,7 @@ class BP_Updater:
     def get_data(self, name):
 
 #         global sheet, service, sheet_id_target, data_range
-        if name == 'Business Pges':
+        if name == 'Business Pages':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Business Pages!B1:F4000").execute()
         elif name == 'Influencers':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Influencers!B1:I2000").execute()
