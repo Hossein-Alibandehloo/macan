@@ -77,8 +77,8 @@ class BP_Updater:
             else:
                 return '-'
     def update(self, startRow, lastRow, st, page_type):
-        startRow = startRow + 2
-        lastRow = lastRow + 2
+#         startRow = startRow + 2
+#         lastRow = lastRow + 2
         progress = st.empty()
         
         if page_type == 'Business Pages':
