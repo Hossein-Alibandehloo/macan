@@ -76,6 +76,32 @@ class BP_Updater:
                 return int(member[1].strip().replace(' ',''))
             else:
                 return '-'
+    def tlg_member2(self, id):
+        if '/t.me/joinchat' not in id:
+            res = requests.get("https://t.me/s/" + id)
+            xp = html.fromstring(res.text)
+            member = xp.xpath("//span[@class='counter_value']/text()")
+            result = 0
+            if len(member) > 0:
+                if 'M' in member[0]:
+                    result = member[0].replace('M', '')
+                    result = float(result) * 1000000 
+                elif 'K' in member[0]:
+                    result = member[0].replace('K', '')
+                    result = float(result) * 1000
+                    print(result)
+                return int(round(result/1000) * 1000) 
+            else:
+                return '-'
+        else:
+            res = requests.get(id)
+            xp = html.fromstring(res.text)
+            member = xp.xpath("//div[@class='tgme_page_extra']/text()")
+            if len(member) > 0:
+                result = member[0].strip().replace('members','').replace(' ', '')
+                return int(round(int(result.replace("subscribers",''))/1000)*1000)
+            else:
+                return '-'
     def update(self, startRow, lastRow, st, page_type):
 #         startRow = startRow + 2
 #         lastRow = lastRow + 2
@@ -140,6 +166,26 @@ class BP_Updater:
                                         range="Influencers!H{}:I{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
             progress.markdown('')
+        elif page_type == "Telegram":
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Influencers!B{}:B{}".format(startRow, lastRow)).execute()
+            values = result['values']
+            id_index = []
+            j = startRow
+            for value in values:
+                if len(value) > 0:
+                    id_index.append([value[0], j])
+                else:
+                    id_index.append(['', j])
+                j += 1           
+            data = []
+            for row in id_index:
+                progress.markdown(f'Initial updating row is: {row[1] - 2}')
+                try:
+                    tlg_data = self.tlg_member2(row[0])
+                except: 
+                    sleep(15)
+                data.append([tlg_data])
+            
     def get_data(self, name):
 
 #         global sheet, service, sheet_id_target, data_range
@@ -168,6 +214,4 @@ class BP_Updater:
         if 'PhoneNumber' in data[0]:
             del df['PhoneNumber']
         
-        return df        
-            
-
+        return df 
