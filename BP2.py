@@ -59,7 +59,7 @@ class BP_Updater:
                 res = round(dict['followers']/1000)
                 return 1000 * int(res), float(dict['er'])/100
             else:
-                return '-', '-'
+                return 'N/A', 'N/A'
 
     def tlg_member(id):
         if '/t.me/joinchat' in id:
@@ -94,7 +94,7 @@ class BP_Updater:
                     print(result)
                 return int(round(result/1000) * 1000) 
             else:
-                return '-'
+                return 'N/A'
         else:
             res = requests.get(id)
             xp = html.fromstring(res.text)
@@ -103,7 +103,7 @@ class BP_Updater:
                 result = member[0].strip().replace('members','').replace(' ', '')
                 return int(round(int(result.replace("subscribers",''))/1000)*1000)
             else:
-                return '-'
+                return 'N/A'
     def update(self, startRow, lastRow, st, page_type):
 #         startRow = startRow + 2
 #         lastRow = lastRow + 2
