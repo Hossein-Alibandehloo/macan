@@ -40,7 +40,7 @@ with st.sidebar:
     starting_row = st.number_input('Insert starting row number', min_value=2, help='You need to enter starting row of your database table')
     st.write('The starting row is: ', starting_row)
     
-    ending_row = st.number_input('Insert ending row number', min_value = starting_row + 50, max_value=10000)
+    ending_row = st.number_input('Insert ending row number', min_value = starting_row + 10, max_value=10000)
     st.write('The ending row is: ', ending_row)
 
     updateButton = st.button('Update Date', on_click=onClickUpdate)
