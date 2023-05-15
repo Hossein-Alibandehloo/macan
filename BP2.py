@@ -167,7 +167,7 @@ class BP_Updater:
             print(request)
             progress.markdown('')
         elif page_type == "Telegram":
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Influencers!B{}:B{}".format(startRow, lastRow)).execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range="Telegram!B{}:B{}".format(startRow, lastRow)).execute()
             values = result['values']
             id_index = []
             j = startRow
@@ -184,6 +184,7 @@ class BP_Updater:
                     tlg_data = self.tlg_member2(row[0])
                 except: 
                     sleep(15)
+                    tlg_data = self.tlg_member2(row[0])
                 data.append([tlg_data])
             
     def get_data(self, name):
