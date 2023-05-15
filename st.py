@@ -47,7 +47,7 @@ with st.sidebar:
 if page_type == 'Influencers':
      st.subheader('Influencers')
      df = bp.get_data('Influencers')
-     df = df[['Name', 'Follower', 'ER']]
+     df = df[['ID', 'Follower', 'ER']]
      df.index = range(2, len(df) + 2)
      st.dataframe(df)
      
@@ -55,6 +55,7 @@ elif page_type == 'Business Pages':
      st.subheader("Business Pages.")
      df = bp.get_data('Business Pages')
      df.index = range(2, len(df) + 2)
+     df = df[['ID', 'Follower', 'ER']]
      st.dataframe(df)
      
 elif page_type == 'Telegram':
