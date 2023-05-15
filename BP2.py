@@ -188,6 +188,10 @@ class BP_Updater:
                     sleep(15)
                     tlg_data = self.tlg_member2(row[0])
                 data.append([tlg_data])
+            request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
+                                        range="Telegram!D{}:D{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
+            print(request)
+            progress.markdown('')               
             
     def get_data(self, name):
 
