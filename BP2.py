@@ -201,7 +201,7 @@ class BP_Updater:
         elif name == 'Influencers':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Influencers!B1:I2000").execute()
         elif name == 'Telegram':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!B1:D2000").execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!A1:C2000").execute()
         data = result['values']
         
         for l in data:
