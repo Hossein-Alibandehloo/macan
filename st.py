@@ -47,7 +47,7 @@ with st.sidebar:
 if page_type == 'Influencers':
      st.subheader('Influencers')
      df = bp.get_data('Influencers')
-     df = df['name', 'follower', 'ER']
+     df = df['Name', 'Follower', 'ER']
      df.index = range(2, len(df) + 2)
      st.dataframe(df)
      
