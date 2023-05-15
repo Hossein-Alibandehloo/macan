@@ -181,7 +181,7 @@ class BP_Updater:
                 j += 1           
             data = []
             for row in id_index:
-                progress.markdown(f'Initial updating row is: {row[1] - 2}')
+                progress.markdown(f'Initial updating row is: {row[1]}')
                 try:
                     tlg_data = self.tlg_member2(row[0])
                 except: 
@@ -191,17 +191,17 @@ class BP_Updater:
             request = self.sheet.values().update(spreadsheetId=self.sheet_id_target,
                                         range="Telegram!C{}:C{}".format(startRow, lastRow), valueInputOption="USER_ENTERED", body={'values':data}).execute()
             print(request)
-            progress.markdown('')               
+            progress.markdown('')
             
     def get_data(self, name):
 
 #         global sheet, service, sheet_id_target, data_range
         if name == 'Business Pages':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Business Pages!B1:F4000").execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Business Pages!B1:F5000").execute()
         elif name == 'Influencers':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Influencers!B1:I2000").execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Influencers!B1:I5000").execute()
         elif name == 'Telegram':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!A1:C2000").execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!A1:C5000").execute()
         data = result['values']
         
         for l in data:
