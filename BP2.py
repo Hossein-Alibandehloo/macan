@@ -197,9 +197,9 @@ class BP_Updater:
 
 #         global sheet, service, sheet_id_target, data_range
         if name == 'Business Pages':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Business Pages!B1:F5000").execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Business Pages!A1:F5000").execute()
         elif name == 'Influencers':
-            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Influencers!B1:I5000").execute()
+            result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Influencers!A1:I5000").execute()
         elif name == 'Telegram':
             result = self.sheet.values().get(spreadsheetId=self.sheet_id_target, range= "Telegram!A1:C5000").execute()
         data = result['values']
