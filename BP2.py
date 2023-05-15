@@ -4,6 +4,8 @@ from google.oauth2 import service_account
 import requests
 import pandas as pd
 from time import sleep
+from lxml import html
+
 
 class BP_Updater:
 
