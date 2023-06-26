@@ -152,6 +152,7 @@ class BP_Updater:
                     id_index.append(['', j])
                 j += 1           
             data = []
+            follower_er = ["-", "-"]
             for row in id_index:
                 progress.markdown(f'Initial updating row is: {row[1]}')
                 try:
