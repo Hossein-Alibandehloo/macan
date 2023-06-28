@@ -46,20 +46,28 @@ class BP_Updater:
         
 
     def influencermarketinghub(self, id):
-        print(id)
-        with requests.Session() as s:
-            header = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0',}
-            Form_data = {
-                'action':'insta_calc_new',
-                'user_name':id
-            }
-            res = s.post('https://influencermarketinghub.com/wp-admin/admin-ajax.php', data=Form_data, headers=header)
-            dict = res.json()
-            if len(dict) > 1:
-                res = round(dict['followers']/1000)
-                return 1000 * int(res), float(dict['er'])/100
-            else:
-                return 'N/A', 'N/A'
+        request_url = "https://hypeauditor.com/instagram/" + id
+        response = requests.get(request_url)
+        tree = html.fromstring(response.content)
+        xpath_expression_followers = "//div[@class='metric metric']/text()"
+
+        data = tree.xpath(xpath_expression_followers)
+        # data = [
+        #     "",
+        #     float(data[1].replace("%",""))/100
+        # ]
+        if len(data) <1:
+            data = [
+                'N/A',
+                "N/A"
+            ]
+        else:
+            data[1] = float(data[1].replace("%",""))/100
+            if 'M' in data[0]:
+                data[0] = int(float(data[0].replace("M", "")) * 1000000)
+            elif "K" in data[0]:
+                data[0] = int(float(data[0].replace("K", "")) * 1000)        
+        return data
 
     def tlg_member(id):
         if '/t.me/joinchat' in id:
