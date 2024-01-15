@@ -31,12 +31,12 @@ class BP_Updater:
 
         # The ID and range of a sample spreadsheet.
         self.sheet_id_target = '1V35Kr3IhPawZFM5oRUVcneRBRxvXP4bvxjKy3aQyIG0'
-        # service = build('sheets', 'v2', credentials=self.creds, http=http)
-        try:
-            service = build('sheets', 'v4', credentials=self.creds, cache_discovery=False)
-        except:
-            DISCOVERY_SERVICE_URL = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
-            service = build('sheets', 'v4', credentials=self.creds, cache_discovery=False)
+        service = build('sheets', 'v4', credentials=self.creds)
+        # try:
+        #     service = build('sheets', 'v4', credentials=self.creds, cache_discovery=False)
+        # except:
+        #     DISCOVERY_SERVICE_URL = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
+        #     service = build('sheets', 'v4', credentials=self.creds, cache_discovery=False)
             
         self.sheet = service.spreadsheets()
         # result = sheet.values().get(spreadsheetId=sheet_id_target,
